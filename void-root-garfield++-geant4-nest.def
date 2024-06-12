@@ -33,7 +33,7 @@ Registry: ghcr.io
     cd $GARFIELD_HOME
     mkdir build
     cd build
-    cmake $GARFIELD_HOME
+    cmake -DCMAKE_INSTALL_PREFIX=/usr/local $GARFIELD_HOME
     make -j8
     make install
 
