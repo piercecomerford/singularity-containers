@@ -1,0 +1,66 @@
+Bootstrap: docker
+
+From: void-linux/void-musl-busybox:latest
+
+Registry: ghcr.io
+
+%post
+    # Update and install Garfield++; NEST; Geant4 prereqs,
+    # ROOT, and things that are nice to have
+    xbps-install -Syu
+    xbps-install -y git nnn make pkg-config root root-R python3-pyroot gsl-devel cmake gcc-fortran gcompat libexecinfo-devel expat-devel libvdt-devel libgomp-devel musl-devel libxerces-c-devel
+
+    # Make directory for source code
+    mkdir /src
+
+    # Install Geant4
+    GEANT4_VERSION=11.2.1
+    mkdir /src/geant4
+    export GEANT4_DIR=/src/geant4
+    cd $GEANT4_DIR
+    wget https://gitlab.cern.ch/geant4/geant4/-/archive/v${GEANT4_VERSION}/geant4-v${GEANT4_VERSION}.tar.gz
+    tar -xzf geant4-v${GEANT4_VERSION}.tar.gz
+    mkdir geant4-v${GEANT4_VERSION}-build
+    cd geant4-v${GEANT4_VERSION}-build
+    cmake -DGEANT4_USE_GDML=ON ../geant4-v${GEANT4_VERSION}
+    make -j8
+    make install
+
+    # Install Garfield++
+    mkdir /src/garfield
+    export GARFIELD_HOME=/src/garfield
+    git clone https://gitlab.cern.ch/garfield/garfieldpp.git $GARFIELD_HOME
+    cd $GARFIELD_HOME
+    mkdir build
+    cd build
+    cmake $GARFIELD_HOME
+    make -j8
+    make install
+
+    # Install NEST
+    mkdir /src/nest
+    export NEST_DIR=/src/nest
+    git clone https://github.com/NESTCollaboration/nest.git $NEST_DIR
+    cd $NEST_DIR
+    # patch NEST (until they accept my PR)
+    sed -i 's/\buint\b /unsigned int /g' ./src/execNEST.cpp
+    sed -i 's/\buint\b /unsigned int /g' ./G4integration/NESTProc.cpp
+    mkdir build
+    cd build
+    cmake -DBUILD_ROOT=ON -DG4=ON $NEST_DIR
+    make -j8
+    make install
+
+    # Delete source files after completion
+    rm -rf /src
+
+%environment
+    source /usr/local/share/Garfield/setupGarfield.sh
+    source /usr/bin/thisroot.sh
+
+%labels
+    Author Pierce Comerford
+    Version 1.0
+
+%help
+    This should install the neatest Void environment you can think of along with ROOT, Garfield++, NEST and GEANT4.
