@@ -14,7 +14,7 @@ Registry: ghcr.io
     # Install Geant4
     mkdir /src/geant4
     export GEANT4_DIR=/src/geant4
-    git clone https://gitlab.cern.ch/geant4/geant4 $GEANT4_DIR
+    git clone https://gitlab.cern.ch/geant4/geant4.git $GEANT4_DIR
     cd $GEANT4_DIR
     mkdir build
     cd build
