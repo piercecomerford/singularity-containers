@@ -57,4 +57,9 @@ Registry: ghcr.io
     Version 1.4
 
 %help
-    This should install the neatest Void environment you can think of along with ROOT, Garfield++, NEST and GEANT4.
+    Neat void musl+busybox+linux with essential particle physics sim software, namely:
+        - ROOT
+        - Garfield++
+	- Geant4
+	- NEST
+    all of which has been compiled to be fully integrated. 
