@@ -1,4 +1,4 @@
 #+TITLE: Singularity Container Deployment Files
 
-These are definition files for deploying containers to be run with [[https://github.com/sylabs/singularity][singularity]]. They can be built using =singularity build --fakeroot CONTAINERNAME.def=.
+These are definition files for deploying containers to be run with [[https://github.com/sylabs/singularity][singularity]]. They can be built using =singularity build --fakeroot CONTAINERNAME.def CONTAINERNAME.sif= , which should probably go in your =$PATH=.
 
