@@ -5,24 +5,20 @@ From: void-linux/void-musl-busybox:latest
 Registry: ghcr.io
 
 %post
-    # Update and install Garfield++; NEST; Geant4 prereqs,
-    # ROOT, and things that are nice to have
-    xbps-install -Syu
-    xbps-install -y git nnn make pkg-config root root-R python3-pyroot gsl-devel cmake gcc-fortran gcompat libexecinfo-devel expat-devel libvdt-devel libgomp-devel musl-devel libxerces-c-devel
+    # Prereqs
+    xbps-install -Syu git make pkg-config root root-R python3-pyroot gsl-devel cmake gcc-fortran gcompat libexecinfo-devel expat-devel libvdt-devel libgomp-devel musl-devel libxerces-c-devel
 
     # Make directory for source code
     mkdir /src
 
     # Install Geant4
-    GEANT4_VERSION=11.2.1
     mkdir /src/geant4
     export GEANT4_DIR=/src/geant4
+    git clone https://gitlab.cern.ch/geant4/geant4 $GEANT4_DIR
     cd $GEANT4_DIR
-    wget https://gitlab.cern.ch/geant4/geant4/-/archive/v${GEANT4_VERSION}/geant4-v${GEANT4_VERSION}.tar.gz
-    tar -xzf geant4-v${GEANT4_VERSION}.tar.gz
-    mkdir geant4-v${GEANT4_VERSION}-build
-    cd geant4-v${GEANT4_VERSION}-build
-    cmake -DGEANT4_USE_GDML=ON ../geant4-v${GEANT4_VERSION}
+    mkdir build
+    cd build
+    cmake -DGEANT4_USE_GDML=ON $GEANT4_DIR
     make -j8
     make install
 
