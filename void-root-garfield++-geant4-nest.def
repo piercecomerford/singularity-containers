@@ -44,7 +44,8 @@ Registry: ghcr.io
     make -j8
     make install
 
-    # Delete source files after completion
+    # Delete unnecessary recovery stuff after installation
+    rm -rf /var/cache/xbps/*
     rm -rf /src
 
 %environment
