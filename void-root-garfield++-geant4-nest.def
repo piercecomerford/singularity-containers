@@ -42,9 +42,6 @@ Registry: ghcr.io
     export NEST_DIR=/src/nest
     git clone https://github.com/NESTCollaboration/nest.git $NEST_DIR
     cd $NEST_DIR
-    # patch NEST (until they accept my PR)
-    sed -i 's/\buint\b /unsigned int /g' ./src/execNEST.cpp
-    sed -i 's/\buint\b /unsigned int /g' ./G4integration/NESTProc.cpp
     mkdir build
     cd build
     cmake -DBUILD_ROOT=ON -DG4=ON $NEST_DIR
