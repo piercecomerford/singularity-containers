@@ -1,6 +1,6 @@
 Bootstrap: docker
 
-From: void-linux/void-musl-busybox:latest
+From: void-linux/void-musl:latest
 
 Registry: ghcr.io
 
@@ -49,7 +49,6 @@ Registry: ghcr.io
     rm -rf /src
 
 %environment
-    exec mksh
     . /usr/local/share/Garfield/setupGarfield.sh
     cd /usr/bin; . /usr/bin/thisroot.sh; cd
 
@@ -58,7 +57,7 @@ Registry: ghcr.io
     Version 1.5
 
 %help
-    Neat fully-integrated void musl+mksh+busybox+linux with essential particle physics sim software, namely:
+    Neat fully-integrated void musl+busybox+linux with essential particle physics sim software, namely:
         - ROOT
         - Garfield++
 	- Geant4
