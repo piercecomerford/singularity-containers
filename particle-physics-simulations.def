@@ -57,7 +57,7 @@ Registry: ghcr.io
     Version 1.5
 
 %help
-    Neat fully-integrated void musl+busybox+linux with essential particle physics sim software, namely:
+    Neat fully-integrated void musl+mksh+linux with essential particle physics sim software, namely:
         - ROOT
         - Garfield++
 	- Geant4
