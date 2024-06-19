@@ -7,7 +7,6 @@ Registry: ghcr.io
 %post
     # Prereqs and niceties
     xbps-install -Syu mksh git make pkg-config root root-R python3-pyroot gsl-devel cmake gcc-fortran gcompat libexecinfo-devel expat-devel libvdt-devel libgomp-devel musl-devel libxerces-c-devel
-    ln -sf /bin/mksh /bin/sh
 
     # Make directory for source code
     mkdir /src
@@ -50,6 +49,7 @@ Registry: ghcr.io
     rm -rf /src
 
 %environment
+    exec mksh
     . /usr/local/share/Garfield/setupGarfield.sh
     cd /usr/bin; . /usr/bin/thisroot.sh; cd
 
