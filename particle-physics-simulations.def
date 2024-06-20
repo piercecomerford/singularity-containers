@@ -6,7 +6,7 @@ Registry: ghcr.io
 
 %post
     # Prereqs and niceties
-    xbps-install -Syu xauth git make pkg-config root root-R python3-pyroot gsl-devel cmake gcc-fortran gcompat libexecinfo-devel expat-devel libvdt-devel libgomp-devel musl-devel libxerces-c-devel
+    xbps-install -Syu bash xauth git make pkg-config root root-R python3-pyroot gsl-devel cmake gcc-fortran gcompat libexecinfo-devel expat-devel libvdt-devel libgomp-devel musl-devel libxerces-c-devel
 
     # Make directory for source code
     mkdir /src
