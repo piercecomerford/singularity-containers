@@ -1,12 +1,12 @@
 Bootstrap: docker
 
-From: void-linux/void-musl-busybox:latest
+From: void-linux/void-musl:latest
 
 Registry: ghcr.io
 
 %post
     # Prereqs and niceties
-    xbps-install -Syu bash xauth git make pkg-config root root-R python3-pyroot gsl-devel cmake gcc-fortran gcompat libexecinfo-devel expat-devel libvdt-devel libgomp-devel musl-devel libxerces-c-devel
+    xbps-install -Syu mksh xauth git make pkg-config root root-R python3-pyroot gsl-devel cmake gcc-fortran gcompat libexecinfo-devel expat-devel libvdt-devel libgomp-devel musl-devel libxerces-c-devel
 
     # Make directory for source code
     mkdir /src
@@ -55,7 +55,7 @@ Registry: ghcr.io
     Version 1.7
 
 %help
-    Neat fully-integrated void musl+busybox+linux with essential particle physics sim software, namely:
+    Neat fully-integrated void musl+linux with essential particle physics sim software, namely:
         - ROOT
         - Garfield++
 	- Geant4
