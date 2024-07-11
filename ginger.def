@@ -58,8 +58,9 @@ Registry: ghcr.io
     Version 1.7
 
 %help
-    Neat fully-integrated void musl+linux with essential particle physics sim software, namely:
-        - ROOT
-        - Garfield++
-	- Geant4
-	- NEST
+    GiNGeR: A neat, fully-integrated void musl+linux with essential particle physics sim software, namely:
+    - Garfield++
+    - NEST
+    - Geant4
+    - ROOT.
+    
