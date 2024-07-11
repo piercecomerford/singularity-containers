@@ -17,7 +17,7 @@ all: $(TARGET1)
 
 # The rule to build the targets
 $(TARGET1): $(SRC1)
-	$(CXX) build $(CXXFLAGS) $(SRC1)  $(TARGET1)
+	$(CXX) build $(CXXFLAGS) $(TARGET1) $(SRC1)
 
 # Clean rule to remove the compiled files
 clean:
