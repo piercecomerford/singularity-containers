@@ -49,6 +49,9 @@ Registry: ghcr.io
     rm -rf /src
 
 %environment
+    bash
+    source /usr/local/share/Garfield/setupGarfield.sh
+    source /usr/bin/thisroot.sh
 
 %labels
     Author Pierce Comerford
