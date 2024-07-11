@@ -8,7 +8,7 @@ TARGET1 = ginger
 SRC1 = ginger.def
 
 # Define the compilation flags
-CXXFLAGS = ' '
+CXXFLAGS = '--fakeroot'
 
 # Installation director
 INSTALL_DIR = $(HOME)/usr/bin
@@ -17,7 +17,7 @@ all: $(TARGET1)
 
 # The rule to build the targets
 $(TARGET1): $(SRC1)
-	$(CXX) build --fakeroot $(TARGET1) $(SRC1) $(CXXFLAGS)
+	$(CXX) build $(CXXFLAGS) $(SRC1)  $(TARGET1)
 
 # Clean rule to remove the compiled files
 clean:
