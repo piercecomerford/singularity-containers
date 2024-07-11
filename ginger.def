@@ -49,9 +49,11 @@ Registry: ghcr.io
     rm -rf /src
 
 %environment
-    bash
-    source /usr/local/share/Garfield/setupGarfield.sh
-    source /usr/bin/thisroot.sh
+    hostname ginger
+
+%runscript
+    exec /bin/bash --rcfile <(echo '. ~/.bashrc; . /usr/bin/thisroot.sh; . /usr/local/share/Garfield/setupGarfield.sh')
+
 
 %labels
     Author Pierce Comerford
