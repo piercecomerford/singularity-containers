@@ -49,8 +49,8 @@ Registry: ghcr.io
     rm -rf /src
 
     # These must be sourced at runtime
-    ln -s /etc/profile.d/ /usr/local/share/Garfield/setupGarfield.sh
-    ln -s /etc/profile.d/ /usr/bin/thisroot.sh
+    ln -s /usr/local/share/Garfield/setupGarfield.sh /etc/profile.d/
+    ln -s /usr/bin/thisroot.sh /etc/profile.d/
 
 %runscript
     exec /bin/bash
