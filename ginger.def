@@ -48,16 +48,16 @@ Registry: ghcr.io
     rm -rf /var/cache/xbps/*
     rm -rf /src
 
-%environment
-    hostname ginger
+    # These must be sourced at runtime
+    ln -s /etc/profile.d/ /usr/local/share/Garfield/setupGarfield.sh
+    ln -s /etc/profile.d/ /usr/bin/thisroot.sh
 
 %runscript
-    exec /bin/bash --rcfile <(echo '. ~/.bashrc; . /usr/bin/thisroot.sh; . /usr/local/share/Garfield/setupGarfield.sh')
-
+    exec /bin/bash
 
 %labels
     Author Pierce Comerford
-    Version 1.7
+    Version 2.1
 
 %help
     GiNGeR: A neat, fully-integrated void musl+linux with essential particle physics sim software, namely:
